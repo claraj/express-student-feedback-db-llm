@@ -1,0 +1,10 @@
+Invalid option/non-existant file: feedback
+qt.qpa.fonts: Populating font family aliases took 138 ms. Replace uses of missing font family "Monospace" with one that exists to avoid this cost. 
+qt.qpa.fonts: Populating font family aliases took 154 ms. Replace uses of missing font family "Monospace" with one that exists to avoid this cost. 
+updateRecord:  "UNIQUE constraint failed: Feedbacks.id"
+updateRecord:  "UNIQUE constraint failed: Feedbacks.id"
+updateRecord:  "UNIQUE constraint failed: Feedbacks.id"
+updateRecord:  "UNIQUE constraint failed: Feedbacks.id"
+updateRecord:  "UNIQUE constraint failed: Feedbacks.id"
+updateRecord:  "UNIQUE constraint failed: Feedbacks.id"
+2026-10-28 20:00:02.504 DB Browser for SQLite[61011:49669661] The class 'NSOpenPanel' overrides the method identifier.  This method is implemented by class 'NSWindow'

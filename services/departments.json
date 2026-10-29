@@ -1,0 +1,59 @@
+{
+    "departments": [
+      {
+        "department": "Accessibility Resources Center",
+        "services": "Provides accommodations and support for students with disabilities to ensure equal access to academic and campus resources. If a student has, or thinks they may have, a disabilty/ies or accessibility need or needs, they are encouraged to contact the accessibility resource center",
+        "email": "accessibility.resources.center@college.edu"
+      },
+      {
+        "department": "Academic Advising",
+        "services": "Offers guidance on course, degree and certificate selection, course planning, assistance to students who may be struggling in classes, and advice on transfer to other institions.",
+        "email": "academic.advising@college.edu"
+      },
+      {
+        "department": "Basic Needs",
+        "services": "Connects students with essential resources including food, housing, transportation, childcare, winter clothing, and emergency financial assistance.",
+        "email": "basic.needs@college.edu"
+      },
+      {
+        "department": "Campus Resources",
+        "services": "Central hub for information about student services, facilities, and programs available across campus.",
+        "email": "campus.resources@college.edu"
+      },
+      {
+        "department": "Counselling",
+        "services": "Provides mental health support, individual therapy, crisis intervention.",
+        "email": "counselling@college.edu"
+      },
+      {
+        "department": "Financial Aid",
+        "services": "Assists students with applying for scholarships, grants, loans, and understanding tuition payment options.",
+        "email": "financial.aid@college.edu"
+      },
+      {
+        "department": "Medical Clinic",
+        "services": "Offers health services free of charge to students, including routine preventive medical exams like physical exams, women's annual exams and pap smears, birth control consultation, testing for sexually transmitted infections, acute care for minor injuries and common illnesses, vaccines, laboratory testing, X-ray services, Physical Therapy, and Nutrition counseling, as well as mental health evaluation and referral.",
+        "email": "medical.clinic@college.edu"
+      },
+      {
+        "department": "Registration",
+        "services": "Manages course enrollment, academic records, transcripts, waivers, and graduation processing.",
+        "email": "registration@college.edu"
+      },
+      {
+        "department": "Technology Support",
+        "services": "Provides help with campus Wi-Fi, computer labs, software, hardware troubleshooting, Zoom, and D2L digital learning tools.",
+        "email": "technology.support@college.edu"
+      },
+      {
+        "department": "Tutoring and Academic Support",
+        "services": "Provides help with class tutoring, writing, math, and using D2L and other digital learning tools.",
+        "email": "technology.support@college.edu"
+      },
+      {
+        "department": "Student Clubs",
+        "services": "Supports student-led organizations and activities that promote community, leadership, and personal interests.",
+        "email": "student.clubs@college.edu"
+      }
+    ]
+  }

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 
 // import the routes in routes/index.js
 const indexRouter = require('./routes/index')
+const adminRouter = require('./routes/admin')
 
 // Create the web application
 const app = express() 
@@ -22,6 +23,7 @@ app.set('view engine', 'hbs')
 
 // make the routes in index.js available to the app 
 app.use('/', indexRouter)
+app.use('/admin', adminRouter)
 
 app.use( function(err, req, res, next) {
     console.error(err.stack)
