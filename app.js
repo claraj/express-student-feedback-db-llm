@@ -30,4 +30,4 @@ app.use( function(err, req, res, next) {
     res.status(500).render('error')
 })
 
-module.exports = app  // export the app
+module.exports = app 
