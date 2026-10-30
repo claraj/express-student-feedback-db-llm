@@ -19,7 +19,7 @@ describe('Home page request', () => {
     it('should return a message about Azure', async () => {
         const res = await request(app).get('/')
         expect(res.statusCode).toBe(200)
-        expect(res.text).toContain('Aure') // typo! Test fails
+        expect(res.text).toContain('Azure') // typo! Test fails
     })
 })
 
