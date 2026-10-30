@@ -14,8 +14,13 @@ router.get('/feedback-form', function(req, res, next){
 })
 
 router.post('/submit-feedback', async function(req, res, next){
-    // get the form data from the form data
+    // get the form data
     const formData = req.body
+
+    if (!req.body) {
+        return next('No feedback form')
+    }
+
     const comments = req.body.comments
     let newFeedback
     let departmentList
@@ -25,7 +30,7 @@ router.post('/submit-feedback', async function(req, res, next){
         res.render('thank_you', { ...formData })  // if saved, return response to use, continue to process data 
     }
 
-    catch (error) {  // Error saving, notify user .
+    catch (error) {  // Error saving, notify user.
         console.error(`Failed saving feedback to database because ${error}`, formData)  // for developers 
         res.locals.message = 'Error saving feedback. Please try again later'
         return next()  // for users. End response, don't try to categorize message if it can't be saved 

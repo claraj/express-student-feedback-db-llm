@@ -15,7 +15,7 @@
         }
       }
     },
-    "testing" : {
+    "test" : {
         "storage": "test_feedback.sqlite",
         "dialect": "sqlite"
     }
