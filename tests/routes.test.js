@@ -15,6 +15,12 @@ describe('Home page request', () => {
         expect(res.statusCode).toBe(200)
         expect(res.text).toContain('Clara') // use your name 
     })
+
+    it('should return a message about Azure', async () => {
+        const res = await request(app).get('/')
+        expect(res.statusCode).toBe(200)
+        expect(res.text).toContain('Aure') // typo! Test fails
+    })
 })
 
 describe('Post feedback form', () => {
