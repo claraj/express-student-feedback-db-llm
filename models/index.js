@@ -1,10 +1,22 @@
 const { Sequelize } = require('sequelize')
 
-// How to connect to the database, what type of database 
-const configuration = {
-    'storage': 'feedback.sqlite',
-    'dialect': 'sqlite'
-}
+const config = require('./config.json')
+
+const env = process.env.NODE_ENV || 'development'
+
+const configuration = config[env]
+
+
+// // How to connect to the database, what type of database 
+// const configuration = {
+//     'storage': 'feedback.sqlite',
+//     'dialect': 'sqlite'
+// }
+
+const password = process.env.POSTGRES_PW
+configuration.password = password
+
+console.log('node env', process.env.NODE_ENV, process.env.POSTGRES_PW, 'config', configuration)
 
 // New Sequelize object 
 const sequelizeDatabase = new Sequelize(configuration)
@@ -18,6 +30,3 @@ const models = {}
 models[feedbackModel.name] = feedbackModel //  { 'Feedback': object with the feedback model info}
 
 module.exports = models 
-
-
-

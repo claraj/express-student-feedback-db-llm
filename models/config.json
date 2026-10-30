@@ -1,0 +1,22 @@
+{
+    "development": {
+      "storage": "feedback.sqlite",
+      "dialect": "sqlite"
+    },
+    "production": {
+      "username": "clara",
+      "database": "postgres",
+      "host": "postgres-db-server-feedback.postgres.database.azure.com",
+      "dialect": "postgres",
+      "dialectOptions": {
+        "ssl": {
+          "require": true, 
+          "rejectUnauthorized": false 
+        }
+      }
+    },
+    "testing" : {
+        "storage": "test_feedback.sqlite",
+        "dialect": "sqlite"
+    }
+  }

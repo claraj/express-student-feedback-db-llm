@@ -1,24 +1,20 @@
-const { GoogleGenAI, Type } = require('@google/genai')
-const departments = require("./departments.json")
+let { GoogleGenAI, Type } = require("@google/genai")
+let departments = require("./departments.json")
+let config = require('./config.json')
 
-// Ensure you set your GEMINI_API_KEY environment variable
-const genAI = new GoogleGenAI( {} )  
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY
+const genAI = new GoogleGenAI( {GEMINI_API_KEY: GEMINI_API_KEY} );
 
-module.exports = (feedbackComments) => {
+async function selectDepartments(message) {
 
     const departmentString = JSON.stringify(departments) 
 
-    const prompt = `
-    Return a list of the most likely college department or departments 
-    to handle feedback comments. A list of possible departments and a 
-    short description of each is included. 
-    Only include departments which seem to be a good fit for the feedback.
-    If there does not seem to be a good fit, return an empty list. 
-    Feedback Comments: ${feedbackComments}
-    Department Choices: ${departmentString}`
+    const prompt = `${config.instructions}
+    message: ${message}
+    department choices: ${departmentString}`
 
-    return genAI.models.generateContent({
-        model: 'gemini-3.1-flash-lite',
+    const response = await genAI.models.generateContent({
+        model: config.model,
         contents: prompt,
         config: {
             responseMimeType: 'application/json',
@@ -29,12 +25,11 @@ module.exports = (feedbackComments) => {
                 }
             }
         }
-    }).then( response => {
-        return JSON.parse(response.text)
     })
+
+    const departmentList = await JSON.parse(response.text)
+    console.log(departmentList)
+    return departmentList
 }
 
-
-
-
-
+module.exports = selectDepartments
