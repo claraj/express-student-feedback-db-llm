@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const identifyDepartments = require('../services/message_sorter')
 const databaseModels = require('../models')
-Feedback = databaseModels.Feedback
+const Feedback = databaseModels.Feedback
 
 
 router.get('/', function(req, res, next) {
