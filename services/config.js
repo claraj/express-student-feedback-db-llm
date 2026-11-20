@@ -1,0 +1,8 @@
+module.exports = {
+    'GEMINI_API_KEY': process.env.GEMINI_API_KEY,
+    'model': 'gemini-3.1-flash-lite',
+    'system_instruction': `Return a list of the most likely departments to handle the following 
+    message. Only include departments which seem to be a good fit for the message. 
+    If there does not seem to be a good fit, return an empty list`
+}
+
