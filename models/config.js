@@ -1,12 +1,13 @@
-{
+module.exports = {
     "development": {
       "storage": "feedback.sqlite",
       "dialect": "sqlite"
     },
     "production": {
-      "username": "clara",
-      "database": "postgres",
-      "host": "postgres-db-server-feedback.postgres.database.azure.com",
+      "username": process.env.DB_USERNAME,
+      "database": process.env.DB_NAME,
+      "host": process.env.DB_HOST,
+      "password": process.env.DB_PASSWORD,
       "dialect": "postgres",
       "dialectOptions": {
         "ssl": {

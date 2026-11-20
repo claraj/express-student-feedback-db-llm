@@ -1,23 +1,12 @@
 const { Sequelize } = require('sequelize')
 
-const config = require('./config.json')
+const config = require('./config')
 
 const env = process.env.NODE_ENV || 'development'
 
 const configuration = config[env]
 
-
-// // How to connect to the database, what type of database 
-// const configuration = {
-//     'storage': 'feedback.sqlite',
-//     'dialect': 'sqlite'
-// }
-
-const password = process.env.POSTGRES_PW
-configuration.password = password
-
-console.log('node env', process.env.NODE_ENV, process.env.POSTGRES_PW, 'config', configuration)
-
+console.log(configuration)
 // New Sequelize object 
 const sequelizeDatabase = new Sequelize(configuration)
 
