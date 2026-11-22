@@ -25,8 +25,8 @@ on:
 env:
   # AZURE_WEBAPP_NAME: ${{ vars.AZURE_WEBAPP_NAME }}    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  BUILD_NODE_VERSION: '24.x'          # set this to the node version to use when building/testing the app
-  RUN_NODE_VERSION: 'NODE:24'         # set this to the node version to use when running the app. Should be the same as the previous line, different syntax 
+  BUILD_NODE_VERSION: '26.x'          # set this to the node version to use when building/testing the app
+  RUN_NODE_VERSION: 'NODE:26'         # set this to the node version to use when running the app. Should be the same as the previous line, different syntax 
 
 permissions:
   contents: read
