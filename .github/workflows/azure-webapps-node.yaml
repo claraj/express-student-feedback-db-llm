@@ -77,9 +77,3 @@ jobs:
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-    - name: 'Set Azure App Service Node Version'
-      run: |
-        az webapp config set \
-          --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" \
-          --name "${{ vars.AZURE_WEBAPP_NAME }}" \
-          --runtime "${{ env.RUN_NODE_VERSION }}"
