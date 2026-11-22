@@ -23,9 +23,9 @@ on:
   workflow_dispatch:
 
 env:
+  AZURE_WEBAPP_NAME: ''    # TODO put your app name here
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  BUILD_NODE_VERSION: '26.x'          # set this to the node version to use when building/testing the app
-  RUN_NODE_VERSION: 'NODE:26-lts'         # set this to the node version to use when running the app. Should be the same as the previous line, different syntax 
+  NODE_VERSION: '26.x'          # set this to the node version to use when building/testing the app at GitHub 
 
 permissions:
   contents: read
@@ -39,7 +39,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v7
       with:
-        node-version: ${{ env.BUILD_NODE_VERSION }}
+        node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
 
     - name: npm install, build, and test
@@ -73,7 +73,7 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v3
       with:
-        app-name: ${{ vars.AZURE_WEBAPP_NAME }}
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 

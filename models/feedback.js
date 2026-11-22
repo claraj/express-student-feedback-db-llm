@@ -18,7 +18,10 @@ module.exports = (sequelizeDatabase) => {
             },
             comments: {
                 type: DataTypes.STRING,
-                allowNull: false   // The only thing a user must include 
+                allowNull: false,   // The only thing a user must include 
+                validate: {
+                    notEmpty: true  // prevent empty strings 
+                }
             },
             departments: {
                 type: DataTypes.JSON, 

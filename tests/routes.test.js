@@ -11,15 +11,15 @@ jest.mock('../services/message_sorter', () => {
 
 describe('Home page request', () => {
     it('should return the home page with the developer name', async () => {
-        const res = await request(app).get('/')
-        expect(res.statusCode).toBe(200)
-        expect(res.text).toContain('Clara') // use your name 
+        const response = await request(app).get('/')
+        expect(response.statusCode).toBe(200)
+        expect(response.text).toContain('Clara') // use your name 
     })
 
     it('should return a message about Azure', async () => {
-        const res = await request(app).get('/')
-        expect(res.statusCode).toBe(200)
-        expect(res.text).toContain('Azure') // typo! Test fails
+        const response = await request(app).get('/')
+        expect(response.statusCode).toBe(200)
+        expect(response.text).toContain('Azure') // typo! Test fails
     })
 })
 
@@ -33,9 +33,9 @@ describe('Post feedback form', () => {
         const exampleFeedback = {'name': 'test name', 'email': 'example@email.com', 'comments': 'testing', 'isCurrentStudent': 'no'}
         const urlEncodedData = new URLSearchParams(exampleFeedback).toString()
 
-        const res = await request(app).post('/submit-feedback').send(urlEncodedData)
-        expect(res.statusCode).toBe(200)
-        expect(res.text).toContain('Thank you')
+        const response = await request(app).post('/submit-feedback').send(urlEncodedData)
+        expect(response.statusCode).toBe(200)
+        expect(response.text).toContain('Thank you')
 
         const feedbacksInDatabase = await Feedback.count() 
         expect(feedbacksInDatabase).toBe(1)  // toBe for strings, ints, is this the exact same object 
@@ -45,7 +45,24 @@ describe('Post feedback form', () => {
 
         expect(firstFeedback.departments).toEqual(['Mock Department'])  // Did the mock work? toEqual for objects, arrays
     })
+
+    
+    it('should reject feedback with no comments', async () => {
+        const exampleFeedback = {'name': 'test name', 'email': 'example@email.com', 'comments': '', 'isCurrentStudent': 'no'}
+        const urlEncodedData = new URLSearchParams(exampleFeedback).toString()
+
+        const response = await request(app).post('/submit-feedback').send(urlEncodedData)
+        // it would be more appropriate to return a 400 bad request vs. 500 server error
+        // We'd have to create a new error handler, and real-world app would implement this 
+        expect(response.statusCode).toBe(500)   
+        expect(response.text).toContain('Error saving feedback. Please try again later')
+
+        const feedbacksInDatabase = await Feedback.count() 
+        expect(feedbacksInDatabase).toBe(0)  // nothing added to the database
+        
+    })
 })
+
 
 
 describe('admin page', () => {
@@ -58,23 +75,30 @@ describe('admin page', () => {
         // Create two example feedbacks
         // The way departments are displayed is messy so we should revise this, and then complete this test. 
         const exampleA = {name: 'A Student', email: 'a@college.com', comments: 'how do I make an appointment', isCurrentStudent: 'yes'} 
-        const exampleB = {name: 'B Student', email: 'b@college.com', comments: '', isCurrentStudent: 'no'}
+        const exampleB = {name: 'B Student', email: 'b@college.com', comments: 'elevators are slow', isCurrentStudent: 'no'}
         Feedback.create(exampleA)
         Feedback.create(exampleB)
 
-        const res = await request(app).get('/admin')
+        const response = await request(app).get('/admin')
 
         Object.values(exampleA).forEach( value => {
-                expect(res.text).toContain(value)
+                expect(response.text).toContain(value)
         })
 
         Object.values(exampleA).forEach( value => {
-            expect(res.text).toContain(value)
+            expect(response.text).toContain(value)
         })
 
-        expect(res.text).toContain('A Student')
-        expect(res.text).toContain('B Student')
+        expect(response.text).toContain('A Student')
+        expect(response.text).toContain('B Student')
     })
 
-
 })
+
+
+
+
+
+
+
+
